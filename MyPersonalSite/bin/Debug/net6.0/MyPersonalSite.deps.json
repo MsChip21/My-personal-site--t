@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "MyPersonalSite/1.0.0": {
+        "runtime": {
+          "MyPersonalSite.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MyPersonalSite/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

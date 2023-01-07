@@ -1,11 +1,20 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MyPersonalSite.Models;
 
 namespace MyPersonalSite.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly List<ServicesModel> _services = new List<ServicesModel>()
+        {
+            new ServicesModel(1,"نقره ای"),
+            new ServicesModel(2,"طلائی"),
+            new ServicesModel(3,"پلاتین"),
+            new ServicesModel(4,"الماس")
+        };
+
         public IActionResult Index()
         {
             return View();
@@ -14,16 +23,12 @@ namespace MyPersonalSite.Controllers
         [HttpGet]
         public IActionResult Contact()
         {
-            var model = new ContactModel();
+            var model = new ContactModel()
+            {
+                Services = new SelectList(_services,"id","name")
+            };
             return View(model);
         }
-
-        //[HttpPost]
-        //public JsonResult Contact(IFormCollection form)
-        //{
-        //    var name = form["name"];
-        //    return Json(name);
-        //}
 
         [HttpPost]
         public IActionResult Contact(ContactModel form)
@@ -37,6 +42,7 @@ namespace MyPersonalSite.Controllers
             ViewData["FormResult"] = "پیغام شما با موفقیت ارسال شد.";
             return View();
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 namespace MyPersonalSite.Models
 {
     public class ContactModel
@@ -16,6 +18,6 @@ namespace MyPersonalSite.Models
         [MinLength(3, ErrorMessage = "حداقل طول ، 5 کاراکتر است")]
         [MaxLength(50, ErrorMessage = "حداکثر طول ، 150 کاراکتر است")]
         public string Message { get; set; }
-
+        public SelectList Services { get; set; }
     }
 }

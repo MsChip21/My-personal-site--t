@@ -11,6 +11,7 @@ namespace MyPersonalSite.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Contact()
         {
             var model = new ContactModel();
@@ -25,10 +26,16 @@ namespace MyPersonalSite.Controllers
         //}
 
         [HttpPost]
-        public JsonResult Contact(ContactModel form)
+        public IActionResult Contact(ContactModel form)
         {
-            Console.WriteLine(form.ToString);
-            return Json(Ok());
+            if (!ModelState.IsValid)
+            {
+                ViewData["FormResult"] = "اطلاعات وارد شده صحیح نیست";
+                return View(form);
+            }
+
+            ViewData["FormResult"] = "پیغام شما با موفقیت ارسال شد.";
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -56,11 +56,31 @@
 						<div class="form-group col-12">
 							<label class="sr-only" for="cmessage">پیغام شما</label>
 							<textarea class="form-control" asp-for="Message" placeholder="پیغام خود را وارد نمایید ..." rows="10" ></textarea>
+							<span asp-validation-for="Message" class="text-danger" ></span>
 						</div>
 						<div class="form-group col-12">
 							<button type="submit" class="btn btn-block btn-primary py-2">ارسال</button>
+
 						</div>
 					</div>
 				</form>
+
+				<hr />
+				@if(!string.IsNullOrWhiteSpace(ViewBag.FormResult))
+				{
+					if (ViewData["FormResult"] == "اطلاعات وارد شده صحیح نیست")
+					{
+						<div class="alert-danger p-3">
+							<p>  @ViewBag.FormResult</p>
+						</div>
+					}
+					else
+					{
+						<div class="alert-success p-3">
+							<p>  @ViewBag.FormResult</p>
+						</div>
+					}
+			
+				}
 			</div>
 		</section>

@@ -13,7 +13,22 @@ namespace MyPersonalSite.Controllers
 
         public IActionResult Contact()
         {
-            return View();
+            var model = new ContactModel();
+            return View(model);
+        }
+
+        //[HttpPost]
+        //public JsonResult Contact(IFormCollection form)
+        //{
+        //    var name = form["name"];
+        //    return Json(name);
+        //}
+
+        [HttpPost]
+        public JsonResult Contact(ContactModel form)
+        {
+            Console.WriteLine(form.ToString);
+            return Json(Ok());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
